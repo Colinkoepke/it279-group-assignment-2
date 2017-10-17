@@ -31,18 +31,3 @@ void shellsort(std::vector<long> &arr) {
         }
     }
 }
-
-int main() {
-    std::vector<long> v;
-    v.push_back(33);
-    v.push_back(15);
-    v.push_back(17);
-    v.push_back(3);
-    v.push_back(7);
-    shellsort(v);
-    for (int i = 0; i < v.size(); i++)
-        std::cout << v.at(i) << ",";
-    
-    std::cout << std::endl;
-    return 0;
-}
