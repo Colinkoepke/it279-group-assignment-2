@@ -40,7 +40,7 @@ void mergeSort(vector<long> & myVector){
             int mid = leftIndex + currArraySize - 1;
             int rightIndex;
 
-            //check to see if the left index is smaller than right, if so then swap
+	    //check to see if the left index is smaller than right, if so then swap
             if(leftIndex + 2 * currArraySize - 1 < myVector.size() -1)
                 rightIndex = leftIndex + 2*currArraySize - 1;
             else
@@ -76,8 +76,18 @@ int main(int argc, char* argv[]){
 
     mergeSort(myvect);
 
+    string outfilename = argv[2];
+    ofstream outfile (outfilename);
+    
     cout << "List numbers after sorting:" << endl;
-    for (int i=0; i < myvect.size(); i++)
-        cout << myvect.at(i) << endl;
+    if (myfile.is_open()){
+        for (int i=0; i < myvect.size(); i++){
+            cout << myvect.at(i) << endl;
+	        myfile << myvect.at(i) << endl;
+        }
+    }
+	
+  else cout << "Unable to open file";
+  myfile.close();
     return 0;
 }
