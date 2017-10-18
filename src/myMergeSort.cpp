@@ -1,6 +1,6 @@
-#include <iostream>
-#include <fstream>
-#include <vector>
+//#include <iostream>
+//#include <fstream>
+#include "myMergeSort.h"
 using namespace std;
 
 void merge(vector<long> & myVector, vector<long> &  tempVector, int leftValue, int rightValue, int endOfRightVect){
@@ -49,45 +49,4 @@ void mergeSort(vector<long> & myVector){
             merge(myVector, tempvect, leftIndex, mid, rightIndex);
         }
     }
-}
-
-//main function to call sort and take command line arguments
-int main(int argc, char* argv[]){
-
-    vector<long> myvect;
-
-    string filename = argv[1];
-    ifstream inFile;
-    inFile.open(filename);
-
-    if(!inFile)
-        cout << "error opening file";
-    else{
-        long readLong;
-        while(!inFile.eof()){
-            inFile >> readLong;
-            myvect.push_back(readLong);
-        }
-    }
-
-    cout << "List of numbers before sorting:" << endl;
-    for (int i=0; i < myvect.size(); i++)
-        cout << myvect.at(i) << endl;
-
-    mergeSort(myvect);
-
-    string outfilename = argv[2];
-    ofstream outfile (outfilename);
-    
-    cout << "List numbers after sorting:" << endl;
-    if (myfile.is_open()){
-        for (int i=0; i < myvect.size(); i++){
-            cout << myvect.at(i) << endl;
-	        myfile << myvect.at(i) << endl;
-        }
-    }
-	
-  else cout << "Unable to open file";
-  myfile.close();
-    return 0;
 }
