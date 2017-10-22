@@ -57,7 +57,6 @@ void writeFile(const string outFileName, vector<long> &arr) {
     cout << "List numbers after sorting:" << endl;
     if (outfile.is_open()){
         for (int i=0; i < arr.size(); i++){
-            cout << arr.at(i) << endl; // temp
             outfile << arr.at(i) << endl;
         }
     }
@@ -67,24 +66,13 @@ void writeFile(const string outFileName, vector<long> &arr) {
     outfile.close();
 }
 
-//main function to call sort and take command line arguments
 int main(int argc, char* argv[]) {
     vector<long> shellSortVector;
 
     string filename = argv[1];
     readFile(filename, shellSortVector);
 
-    //cout << "List of numbers before sorting:" << endl;
-    //for (int i=0; i < mergeSortVector.size(); i++)
-    //    cout << mergeSortVector.at(i) << endl;
-
     shellsort(shellSortVector);
-
-    /*cout << endl << "After sorting" << endl;
-    for (int i = 0; i < mergeSortVector.size(); i++) {
-        cout << mergeSortVector.at(i) << endl;
-    }
-    //shellsort(mergeSortVector);*/
 
     string outfilename = argv[2];
 
