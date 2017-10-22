@@ -1,6 +1,7 @@
-#include "myMergeSort.h"
+#include <iostream>
+#include <fstream>
 using namespace std;
-
+  
 /**
  * merge function takes 4 params
  * 1st param - takes array of numbers read from file
@@ -10,6 +11,7 @@ using namespace std;
  */
 void merge(long array[], int leftIndex, int middleOfArray, int rightIndex){
   
+    //initialize all variables
     int leftSubIndex = 0;
     int rightSubIndex = 0;
     
@@ -89,4 +91,56 @@ void mergeSort(long array[], int totalArraySize){
            merge(array, leftIndex, middleOfArray, rightIndex);
        }
    }
+}
+
+int main(int argc, char* argv[]){
+  
+    string filename = argv[1];
+    string outfile = argv[2];
+    int fileSize = 0;
+    
+    ifstream inFileStream;
+    inFileStream.open(filename);
+
+    //read from file to find size to make array
+    if(!inFileStream)
+        cout << "error opening file";
+    else{
+	long nextLine;
+        while(!inFileStream.eof()){
+	   inFileStream >> nextLine;
+           fileSize++;
+        }
+    }
+    inFileStream.close();
+    
+    inFileStream.open(filename);
+    long numbersArray[fileSize];
+    
+    //read from file again to get all numbers
+    if(!inFileStream)
+        cout << "error opening file";
+    else{
+        for(int i=0; i < fileSize; i++){
+	    long readLong;
+            inFileStream >> readLong;
+            numbersArray[i] = readLong;
+        }
+    }
+    inFileStream.close();
+ 
+    //run mergesort
+    mergeSort(numbersArray, fileSize);
+   
+    ofstream myfile (outfile);
+    
+    //write out to file 
+    cout << "List numbers after sorting:" << endl;
+    if (myfile.is_open()){
+      for (int i=0; i < fileSize; i++){
+	cout << numbersArray[i] << endl;
+	myfile << numbersArray[i] << endl;
+      }
+    }
+    return 0;
 }
