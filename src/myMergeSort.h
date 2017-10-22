@@ -1,10 +1,8 @@
 #ifndef MY_MERGE_SORT_H_
 #define MY_MERGE_SORT_H_
 
-#include <vector>
+void merge(long array[], int leftIndex, int middleOfArray, int rightIndex);
 
-void merge(std::vector<long> & myVector, std::vector<long> &  tempVector, int leftValue, int rightValue, int endOfRightVect);
-
-void mergeSort(std::vector<long> & myVector);
+void mergeSort(long array[], int totalArraySize);
 
 #endif
