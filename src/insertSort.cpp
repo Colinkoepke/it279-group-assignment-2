@@ -57,16 +57,6 @@ Node* InsertionSort(Node *head)
   return result;
 }
 
-void Print(Node *head)
-{
-	while( head )
-	{
-	  cout << head->data << endl;
-	  head = head->next;
-	}
-	cout << endl;
-}
-
 int main(int argc, char* argv[])
 {
 	string fileName = argv[1];
